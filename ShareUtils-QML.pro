@@ -1,10 +1,8 @@
-TEMPLATE = app
+TEMPLATE = lib
 
-QT += qml quick widgets
+CONFIG += staticlib
 
-SOURCES += main.cpp
-
-RESOURCES += qml.qrc
+QT += qml quick
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -25,5 +23,3 @@ android {
     HEADERS += android/androidshareutils.h
 }
 
-# Default rules for deployment.
-include(deployment.pri)
