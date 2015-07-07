@@ -1,5 +1,6 @@
 //=============================================================================
 // Copyright (c) 2014 Nicolas Froment
+// Copyright (c) 2015 Alexey Novikov
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +32,7 @@ public:
     PlatformShareUtils(QQuickItem *parent = 0) : QQuickItem(parent){}
     virtual ~PlatformShareUtils() {}
     virtual void share(const QString &text, const QUrl &url){ qDebug() << text << url; }
+    virtual void shareImage(const QString &text, const QUrl &url){ share(text,url); }
 };
 
 class ShareUtils : public QQuickItem
@@ -40,6 +42,7 @@ class ShareUtils : public QQuickItem
 public:
     explicit ShareUtils(QQuickItem *parent = 0);
     Q_INVOKABLE void share(const QString &text, const QUrl &url);
+    Q_INVOKABLE void shareImage(const QString &text, const QUrl &url);
 };
 
 #endif //SHAREUTILS_H

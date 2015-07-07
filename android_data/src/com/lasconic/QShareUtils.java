@@ -1,5 +1,6 @@
 //=============================================================================
 // Copyright (c) 2014 Nicolas Froment
+// Copyright (c) 2015 Alexey Novikov
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +26,14 @@ package com.lasconic;
 import org.qtproject.qt5.android.QtNative;
 
 import java.lang.String;
+import java.io.File;
 import android.content.Intent;
 import android.util.Log;
+import android.net.Uri;
+import android.content.ContentValues;
+import android.provider.MediaStore.Images;
+import android.content.Context;
+
 
 public class QShareUtils
 {
@@ -44,4 +51,22 @@ public class QShareUtils
         sendIntent.setType("text/plain");
         QtNative.activity().startActivity(sendIntent);
     }
+
+    public static void shareImage(String text, String url) {
+        if (QtNative.activity() == null)
+            return;
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("image/jpeg");
+/* TODO: set image title
+        ContentValues values = new ContentValues();
+        values.put(Images.Media.TITLE, text);
+        values.put(Images.Media.MIME_TYPE, "image/jpeg");
+        Uri uri = QtNative.activity().getContentResolver().insert(Images.Media.EXTERNAL_CONTENT_URI, values);
+        share.putExtra(Intent.EXTRA_STREAM, uri);
+*/
+        File file = new File(url);
+        share.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+        QtNative.activity().startActivity(Intent.createChooser(share, "Share Coloring Page"));
+    }
+
 }

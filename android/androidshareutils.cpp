@@ -1,5 +1,6 @@
 //=============================================================================
 // Copyright (c) 2014 Nicolas Froment
+// Copyright (c) 2015 Alexey Novikov
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -34,6 +35,16 @@ void AndroidShareUtils::share(const QString &text, const QUrl &url)
     QAndroidJniObject jsUrl = QAndroidJniObject::fromString(url.toString());
     QAndroidJniObject::callStaticMethod<void>("com/lasconic/QShareUtils",
                                        "share",
+                                       "(Ljava/lang/String;Ljava/lang/String;)V",
+                                       jsText.object<jstring>(), jsUrl.object<jstring>());
+}
+void AndroidShareUtils::shareImage(const QString &text, const QUrl &url)
+{
+    qDebug() << text << url.toString();
+    QAndroidJniObject jsText = QAndroidJniObject::fromString(text);
+    QAndroidJniObject jsUrl = QAndroidJniObject::fromString(url.toString());
+    QAndroidJniObject::callStaticMethod<void>("com/lasconic/QShareUtils",
+                                       "shareImage",
                                        "(Ljava/lang/String;Ljava/lang/String;)V",
                                        jsText.object<jstring>(), jsUrl.object<jstring>());
 }

@@ -1,5 +1,6 @@
 //=============================================================================
 // Copyright (c) 2014 Nicolas Froment
+// Copyright (c) 2015 Alexey Novikov
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +31,7 @@ class AndroidShareUtils : public PlatformShareUtils
 public:
     AndroidShareUtils(QQuickItem* parent = 0);
     void share(const QString &text, const QUrl &url) override;
+    void shareImage(const QString &text, const QUrl &url) override;
 };
 
 #endif // ANDROIDSHAREUTILS_H

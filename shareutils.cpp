@@ -1,5 +1,6 @@
 //=============================================================================
 // Copyright (c) 2014 Nicolas Froment
+// Copyright (c) 2015 Alexey Novikov
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -45,4 +46,9 @@ ShareUtils::ShareUtils(QQuickItem *parent)
 void ShareUtils::share(const QString &text, const QUrl &url)
 {
     _pShareUtils->share(text, url);
+}
+
+void ShareUtils::shareImage(const QString &text, const QUrl &url)
+{
+    _pShareUtils->shareImage(text, url);
 }
