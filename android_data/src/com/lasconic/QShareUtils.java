@@ -52,21 +52,22 @@ public class QShareUtils
         QtNative.activity().startActivity(sendIntent);
     }
 
-    public static void shareImage(String text, String url) {
+    public static void shareImage(String url) {
         if (QtNative.activity() == null)
             return;
         Intent share = new Intent(Intent.ACTION_SEND);
         share.setType("image/jpeg");
-/* TODO: set image title
-        ContentValues values = new ContentValues();
-        values.put(Images.Media.TITLE, text);
-        values.put(Images.Media.MIME_TYPE, "image/jpeg");
-        Uri uri = QtNative.activity().getContentResolver().insert(Images.Media.EXTERNAL_CONTENT_URI, values);
-        share.putExtra(Intent.EXTRA_STREAM, uri);
-*/
-        File file = new File(url);
-        share.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
-        QtNative.activity().startActivity(Intent.createChooser(share, "Share Coloring Page"));
+        share.putExtra(Intent.EXTRA_STREAM, Uri.parse(url));
+        QtNative.activity().startActivity(Intent.createChooser(share, "Share with ..."));
+    }
+
+    public static void viewImage(String url) {
+        if (QtNative.activity() == null)
+            return;
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+        intent.setDataAndType(Uri.parse(url), "image/*");
+        QtNative.activity().startActivity(intent);
     }
 
 }

@@ -32,7 +32,8 @@ public:
     PlatformShareUtils(QQuickItem *parent = 0) : QQuickItem(parent){}
     virtual ~PlatformShareUtils() {}
     virtual void share(const QString &text, const QUrl &url){ qDebug() << text << url; }
-    virtual void shareImage(const QString &text, const QUrl &url){ share(text,url); }
+    virtual void shareImage(const QUrl &url){ share("Share Image:",url); }
+    virtual void viewImage(const QUrl &url){ share("View Image:",url); }
 };
 
 class ShareUtils : public QQuickItem
@@ -42,7 +43,8 @@ class ShareUtils : public QQuickItem
 public:
     explicit ShareUtils(QQuickItem *parent = 0);
     Q_INVOKABLE void share(const QString &text, const QUrl &url);
-    Q_INVOKABLE void shareImage(const QString &text, const QUrl &url);
+    Q_INVOKABLE void shareImage(const QUrl &url);
+    Q_INVOKABLE void viewImage(const QUrl &url);
 };
 
 #endif //SHAREUTILS_H

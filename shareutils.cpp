@@ -48,7 +48,12 @@ void ShareUtils::share(const QString &text, const QUrl &url)
     _pShareUtils->share(text, url);
 }
 
-void ShareUtils::shareImage(const QString &text, const QUrl &url)
+void ShareUtils::shareImage(const QUrl &url)
 {
-    _pShareUtils->shareImage(text, url);
+    _pShareUtils->shareImage(url);
+}
+
+void ShareUtils::viewImage(const QUrl &url)
+{
+    _pShareUtils->viewImage(url);
 }

@@ -31,7 +31,8 @@ class AndroidShareUtils : public PlatformShareUtils
 public:
     AndroidShareUtils(QQuickItem* parent = 0);
     void share(const QString &text, const QUrl &url) override;
-    void shareImage(const QString &text, const QUrl &url) override;
+    void shareImage(const QUrl &url) override;
+    void viewImage(const QUrl &url) override;
 };
 
 #endif // ANDROIDSHAREUTILS_H
