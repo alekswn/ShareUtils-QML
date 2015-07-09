@@ -33,7 +33,7 @@ void AndroidShareUtils::share(const QString &text, const QUrl &url)
 {
     QAndroidJniObject jsText = QAndroidJniObject::fromString(text);
     QAndroidJniObject jsUrl = QAndroidJniObject::fromString(url.toString());
-    QAndroidJniObject::callStaticMethod<void>("com/lasconic/QShareUtils",
+    QAndroidJniObject::callStaticMethod<void>("com/github/alekswn/shareutils_qml/QShareUtils",
                                        "share",
                                        "(Ljava/lang/String;Ljava/lang/String;)V",
                                        jsText.object<jstring>(), jsUrl.object<jstring>());
@@ -42,7 +42,7 @@ void AndroidShareUtils::shareImage(const QUrl &url)
 {
     qDebug() << url.toString();
     QAndroidJniObject jsUrl = QAndroidJniObject::fromString(url.toString());
-    QAndroidJniObject::callStaticMethod<void>("com/lasconic/QShareUtils",
+    QAndroidJniObject::callStaticMethod<void>("com/github/alekswn/shareutils_qml/QShareUtils",
                                        "shareImage",
                                        "(Ljava/lang/String;)V",
                                        jsUrl.object<jstring>());
@@ -51,7 +51,7 @@ void AndroidShareUtils::viewImage(const QUrl &url)
 {
     qDebug() << url.toString();
     QAndroidJniObject jsUrl = QAndroidJniObject::fromString(url.toString());
-    QAndroidJniObject::callStaticMethod<void>("com/lasconic/QShareUtils",
+    QAndroidJniObject::callStaticMethod<void>("com/github/alekswn/shareutils_qml/QShareUtils",
                                        "viewImage",
                                        "(Ljava/lang/String;)V",
                                        jsUrl.object<jstring>());

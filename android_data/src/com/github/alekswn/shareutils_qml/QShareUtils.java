@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 //=============================================================================
 
-package com.lasconic;
+package com.github.alekswn.shareutils_qml;
 
 import org.qtproject.qt5.android.QtNative;
 
