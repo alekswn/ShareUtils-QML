@@ -33,6 +33,8 @@ public:
     void share(const QString &text, const QUrl &url) override;
     void shareImage(const QUrl &url) override;
     void viewImage(const QUrl &url) override;
+    void installApp(const QString &appPackageName) override;
+
 };
 
 #endif // ANDROIDSHAREUTILS_H

@@ -56,3 +56,13 @@ void AndroidShareUtils::viewImage(const QUrl &url)
                                        "(Ljava/lang/String;)V",
                                        jsUrl.object<jstring>());
 }
+
+void AndroidShareUtils::installApp(const QString &appPackageName)
+{
+    qDebug() << appPackageName;
+    QAndroidJniObject jsText = QAndroidJniObject::fromString(appPackageName);
+    QAndroidJniObject::callStaticMethod<void>("com/github/alekswn/shareutils_qml/QShareUtils",
+                                       "installApp",
+                                       "(Ljava/lang/String;)V",
+                                       jsText.object<jstring>());
+}

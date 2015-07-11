@@ -70,4 +70,13 @@ public class QShareUtils
         QtNative.activity().startActivity(intent);
     }
 
+    public static void installApp(String appPackageName) {
+        if (QtNative.activity() == null)
+            return;
+        try {
+            QtNative.activity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+        } catch (android.content.ActivityNotFoundException anfe) {
+            QtNative.activity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+        }
+    }
 }

@@ -34,6 +34,7 @@ public:
     virtual void share(const QString &text, const QUrl &url){ qDebug() << text << url; }
     virtual void shareImage(const QUrl &url){ share("Share Image:",url); }
     virtual void viewImage(const QUrl &url){ share("View Image:",url); }
+    virtual void installApp(const QString &appPackageName){ share("Install Appication:",appPackageName); }
 };
 
 class ShareUtils : public QQuickItem
@@ -45,6 +46,7 @@ public:
     Q_INVOKABLE void share(const QString &text, const QUrl &url);
     Q_INVOKABLE void shareImage(const QUrl &url);
     Q_INVOKABLE void viewImage(const QUrl &url);
+    Q_INVOKABLE void installApp(const QString &appPackageName);
 };
 
 #endif //SHAREUTILS_H

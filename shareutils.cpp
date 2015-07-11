@@ -57,3 +57,8 @@ void ShareUtils::viewImage(const QUrl &url)
 {
     _pShareUtils->viewImage(url);
 }
+
+void ShareUtils::installApp(const QString &appPackageName)
+{
+    _pShareUtils->viewImage(appPackageName);
+}
